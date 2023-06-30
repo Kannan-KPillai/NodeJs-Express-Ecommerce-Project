@@ -1,0 +1,125 @@
+
+
+<section>
+  <div class="container">
+    <div class="row mt-4">
+      <a href="/admin/add-category" class="btn btn-success ml-auto">Add Categories</a>
+    </div>
+    
+    <div class="table-responsive mt-5">
+      <table class="table table-bordered table-hover" id="productsTable">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Category</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each category}}
+          <tr>
+            <td><img style="width: 50px; height: 50px;" src="{{this.photos.[0].fileName}}" alt=""></td>
+            <td>{{this.category}}</td>
+            <td>
+             <a href="/admin/edit-category/{{this._id}}" class="btn btn-primary btn-sm">Edit</a>
+              {{#if this.isHide}}
+             <button class="btn btn-success btn-sm show-button" data-id="{{this._id}}">Show</button>
+              {{else}}
+              <button class="btn btn-danger btn-sm hide-button" data-id="{{this._id}}">Hide</button>
+              {{/if}}
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+  }
+
+  .btn {
+    border-radius: 0;
+  }
+
+  .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+
+  .table-responsive {
+    border: none;
+  }
+
+  .table {
+    font-size: 14px;
+  }
+
+  .table thead th {
+    font-weight: bold;
+    vertical-align: middle;
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+  }
+
+  .table tbody td {
+    vertical-align: middle;
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const categoryContainer = document.getElementById('productsTable');
+    categoryContainer.addEventListener('click', function(event) {
+      const target = event.target;
+      if (target.classList.contains('show-button')) {
+        event.preventDefault();
+        const categoryId = target.getAttribute('data-id');
+
+        Swal.fire({
+          title: 'Are you sure?',
+          text: 'Do you want to show this category?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Show',
+          cancelButtonText: 'Cancel',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = '/admin/show-category/' + categoryId;
+          }
+        });
+      } else if (target.classList.contains('hide-button')) {
+        event.preventDefault();
+        const categoryId = target.getAttribute('data-id');
+
+        Swal.fire({
+          title: 'Are you sure?',
+          text: 'Do you want to hide this category?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Hide',
+          cancelButtonText: 'Cancel',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = '/admin/hide-category/' + categoryId;
+          }
+        });
+      }
+    });
+  });
+</script>

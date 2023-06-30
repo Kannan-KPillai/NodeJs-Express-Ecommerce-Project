@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    background-color: rgba(21, 21, 21, 1);
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+  }
+
+  .iphone {
+    width: 600px;
+    height: 300px;
+    background-color: #F7F7F7;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header {
+    height: 300px;
+    background-color: #44B0A0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-summary {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    text-align: center;
+  }
+
+  .summary-text {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+  }
+
+  .summary-balance {
+    font-size: 3rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.3rem;
+  }
+
+  .summary-text-2 {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+
+  .page-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .card-body {
+    padding: 0;
+  }
+
+  .card-title {
+    margin-bottom: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #dddddd;
+  }
+
+  th {
+    background-color: #44B0A0;
+    color: white;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #F7F7F7;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .credit-container {
+    height: 200px;
+    overflow-y: scroll;
+  }
+  
+  .debit-container {
+    height: 200px;
+    overflow-y: scroll;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="iphone">
+      <div class="header">
+        <div class="header-summary">
+          <div class="summary-text">
+            My Wallet Balance
+          </div>
+          <div class="summary-balance">
+            &#8377; {{user.walletAmount}}
+          </div>
+          <div class="summary-text-2">
+            +&nbsp;280.00
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-container">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title" style="text-align: center;">Credit Details</h4>
+        <div class="credit-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Created On</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each user.walletCredit}}
+              <tr>
+                <td>{{this.date}}</td>
+                <td>{{this.amount}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title" style="text-align: center;">Debit Details</h4>
+        <div class="debit-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Debited On</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each user.walletDebit}}
+              <tr>
+                <td>{{this.date}}</td>
+                <td>{{this.amount}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

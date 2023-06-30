@@ -1,0 +1,388 @@
+<style>
+  .brand-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .brand-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .brand-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .brand-card:hover .brand-overlay {
+    opacity: 1;
+  }
+
+  .brand-info {
+    text-align: center;
+  }
+
+  .brand-info h5 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .brand-info p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+  .carousel-img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+  }
+ 
+</style>
+
+  <div style="height:5rem;background-color: rgba(21, 21, 21, 1)"></div>
+          {{!-- banner 1 --}}
+{{!-- <div style="background-color: rgba(21, 21, 21, 1);"> --}}
+<div style="height: 60px; background-color: rgba(21, 21, 21, 1); display: flex; align-items: center; justify-content: center;">
+    <h4 style="color: white;">Buy Your Favorite Smart Phone from PhoneMax</h4>
+</div>
+
+
+<div class="bg-image d-flex justify-content-center align-items-center" 
+style="background-image: url(https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1684242615/Croma%20Assets/CMS/CAtegory/Mobile%20phone%20-%20C10/16-05-23/Desktop/Main%20Banner/D_main-banner_hat0zq.png/mxw_2048,f_auto);
+background-repeat:no-repeat; background-size:cover; height: 400px; width:100%">
+</div>
+
+
+           {{!-- Latest products --}}
+<section style="background-color: rgba(53, 53, 53, 1)">
+  <div class="text-center container py-3">
+    <h4 class="mt-4 mb-3" style="color: white;"><strong>Latest Mobile Phones For You</strong></h4>
+
+    <div class="row">
+      {{#each products}}
+      <div class="col-lg-3 col-md-6 mb-3">
+        <div class="card" style="background-color: rgba(53, 53, 53, 1); height: 100%;">
+          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
+            <a href="/productdetails/{{this._id}}"><img src="{{this.photos.[0].fileName}}" class="card-img-top"
+                alt="..." /></a>
+            <a href="#!">
+              <div class="mask">
+                <div class="d-flex justify-content-start align-items-end h-100">
+                  <h5><span class="badge bg-primary ms-2" style="color: blanchedalmond;">New</span></h5>
+                </div>
+              </div>
+              <div class="hover-overlay">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </div>
+            </a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title mb-2" style="color: white;">{{this.name}}</h5>
+            <p style="color: white;">{{this.category}}</p>
+            <h6 class="mb-2" style="color: white;">
+              {{#if this.offerPrice}}
+              <del style="color: red;">{{this.price}}</del> {{this.offerPrice}}
+              {{else}}
+              {{this.price}}
+              {{/if}}
+            </h6>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+
+
+
+
+  {{!-- smart phone categories --}}
+
+
+
+<div style="background-color: rgba(21, 21, 21, 1); padding-top: 50px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <a class="ripple" href="#!" style="padding-right: 15px; padding-left: 15px;">
+          <img
+            alt="example"
+            class="img-fluid rounded"
+            src="https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1684242611/Croma%20Assets/CMS/CAtegory/Mobile%20phone%20-%20C10/16-05-23/Desktop/Choose%20Your%20Type/3split_PCP_righttype_iPhone_15May2023_dfaihn.png/mxw_2048,f_auto"
+          />
+        </a>
+      </div>
+      <div class="col-md-6">
+        <a class="ripple" href="#!" style="padding-right: 15px; padding-left: 15px;">
+          <img
+            alt="example"
+            class="img-fluid rounded"
+            src="https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1684242611/Croma%20Assets/CMS/CAtegory/Mobile%20phone%20-%20C10/16-05-23/Desktop/Choose%20Your%20Type/3split_PCP_righttype_Android_15May2023_m5mclk.png/mxw_2048,f_auto"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+         {{!-- different brands --}}
+<section style="background-color: rgba(21, 21, 21, 1);">
+  <div class="container py-5">
+    <h4 class="text-center mb-5" style="color: white;"><strong>Trusted Brands</strong></h4>
+
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="brand-card">
+          <img src="https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1666000241/Croma%20Assets/CMS/CAtegory/Mobile%20phone%20-%20C10/NEW%20PCP%20DESIGN%20-%20OCT/Updated/4spli_PCP_shopbybrand_oneplus_27sep2022_bdlvsd.png/mxw_2048,f_auto"
+            class="w-100" />
+          <a href="/all-products" class="brand-overlay">
+            <div class="mask"></div>
+            <div class="brand-info">
+              <h5>OnePlus</h5>
+              <p>Explore OnePlus products</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="brand-card">
+          <img src="https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1666000242/Croma%20Assets/CMS/CAtegory/Mobile%20phone%20-%20C10/NEW%20PCP%20DESIGN%20-%20OCT/Updated/4spli_PCP_shopbybrand_vivo_27sep2022_knaawj.png/mxw_2048,f_auto"
+            class="w-100" />
+          <a href="/all-products" class="brand-overlay">
+            <div class="mask"></div>
+            <div class="brand-info">
+              <h5>Vivo</h5>
+              <p>Explore Vivo products</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="brand-card">
+          <img src="https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1667542217/Croma%20Assets/CMS/CAtegory/Mobile%20phone%20-%20C10/4spli_PCP_shopbybrand_realme_3nov2022_u4p8mv.png/mxw_2048,f_auto"
+            class="w-100" />
+          <a href="/all-products" class="brand-overlay">
+            <div class="mask"></div>
+            <div class="brand-info">
+              <h5>Realme</h5> 
+              <p>Explore Realme products</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="brand-card">
+          <img src="https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1666000241/Croma%20Assets/CMS/CAtegory/Mobile%20phone%20-%20C10/NEW%20PCP%20DESIGN%20-%20OCT/Updated/4spli_PCP_shopbybrand_oppo_27sep2022_aga789.png/mxw_2048,f_auto"
+            class="w-100" />
+          <a href="/all-products" class="brand-overlay">
+            <div class="mask"></div>
+            <div class="brand-info">
+              <h5>Oppo</h5>
+              <p>Explore Oppo products</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="brand-card">
+          <img src="https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1666000242/Croma%20Assets/CMS/CAtegory/Mobile%20phone%20-%20C10/NEW%20PCP%20DESIGN%20-%20OCT/Updated/4spli_PCP_shopbybrand_mi_27sep2022_tpwcdb.png/mxw_2048,f_auto"
+            class="w-100" />
+          <a href="/all-products" class="brand-overlay">
+            <div class="mask"></div>
+            <div class="brand-info">
+              <h5>Xiaomi</h5>
+              <p>Explore Xiaomi products</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="brand-card">
+          <img src="https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1666000242/Croma%20Assets/CMS/CAtegory/Mobile%20phone%20-%20C10/NEW%20PCP%20DESIGN%20-%20OCT/Updated/4spli_PCP_shopbybrand_tecno_27sep2022_pi8az1.png/mxw_2048,f_auto"
+            class="w-100" />
+          <a href="/all-products" class="brand-overlay">
+            <div class="mask"></div>
+            <div class="brand-info">
+              <h5>Tecno</h5>
+              <p>Explore Tecno products</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{!-- 
+  <section style="background-color: rgba(21, 21, 21, 1)">
+    <div class="container">
+        <div class="card card-custom" style="width: 30rem;" "background-color: rgba(21, 21, 21, 1)">
+            <div class="row" style="background-color: rgba(21, 21, 21, 1)">
+                {{#each category}}
+                {{#if isHide}}
+                {{else}}
+                <div class=" col-md-8 mb-4">
+                    <div class="hover-overlay ripple">
+                        <img src="/category-image/{{this._id}}.jpg" alt="..." class="img-fluid" />
+                        <a href="/categorydetails/{{this._id}}">
+                            <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);"></div>
+                        </a>
+                    </div>
+                </div>
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section> --}}
+
+<style>
+    .col-md-3 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+</style>
+
+   
+
+      {{!-- banner 2 --}}
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators"> 
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <!-- Add additional indicators for each banner -->
+    {{#each banners}}
+    <li data-target="#carouselExampleIndicators" data-slide-to="{{@index}}"></li>
+    {{/each}}
+  </ol>
+  <div class="carousel-inner">  
+    <div class="carousel-item active">
+      <img class="d-block w-100 carousel-img" src="https://www.thechennaimobiles.com/image/cache/catalog/HOME%20BANNER/n2-1920x630.png" alt="First slide">
+    </div>
+    <!-- Add additional slide items for each banner -->
+    {{#each banners}}
+    <div class="carousel-item">
+      <div class="d-flex justify-content-center align-items-center">
+        <img class="carousel-img" src="{{this.photos.[0].fileName}}" alt="Banner Image">
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center text-lg-start text-white" style="background-color: #1c2331; height:450px">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-between p-4" style="background-color: #000000">
+    <!-- Left -->
+    <div class="me-5">
+      <span><strong>Shop Mobile Phones Online at the Best Prices in India</strong></span>
+    </div>
+    <!-- Left -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links -->
+  <section class="mt-5">
+    <div class="container text-center text-md-start">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold">PhoneMax</h6>
+          <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+          <p>
+           It’s easy to get caught up in acronyms and tech specs while buying a new smartphone but no matter your budget, your usage, or your OS preference, you’ll always find the best smartphone for yourself at PhoneMax. 
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold">Products</h6>
+          <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+          <p>
+            <a href="#!" class="text-white">Android SmartPhones</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">Apple SmartPhones</a>
+          </p>
+          <p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold">Useful links</h6>
+          <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+          <p>
+            <a href="#!" class="text-white">Help And Support</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">FAQs</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">Buying Guide</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">Return Policy</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold">Contact</h6>
+          <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+         
+          <p><i class="fas fa-envelope mr-3"></i> phonemax@.com</p>
+          <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links -->
+
+  <!-- Footer Text -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+  Copyright @PhoneMax2023
+  </div>
+  <!-- Footer Text -->
+</footer>
+<!-- Footer -->
+
+
