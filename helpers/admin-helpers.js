@@ -145,13 +145,6 @@ blockUser:(userId)=>{
       });
     },
   
-    // deleteBanner:()=>{
-    //   return new Promise((resolve,reject)=>{
-    //     let remove = db.get().collection(collection.BANNER_COLLECTION).deleteOne()
-    //     resolve(remove)
-    //   })
-    // },
-
     deleteBanner: (bannerId) => {
       return new Promise((resolve, reject) => {
         db.get()
@@ -297,7 +290,8 @@ blockUser:(userId)=>{
             _id: { $month: { $toDate: "$date" } },
             totalAmount: { $sum: "$totalAmount" }
           }
-        }
+        },
+        {$sort:{'_id':1}},
       ]).toArray((err, result) => {
         if (err) {
           console.error(err);
